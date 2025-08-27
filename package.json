@@ -17,8 +17,15 @@
     "@biomejs/biome": "^2.0.6",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
+    "@types/node": "^24.2.0",
     "husky": "^9.1.7",
+    "lint-staged": "^16.1.4",
     "typescript": "^5.8.3",
     "vitest": "^3.0.8"
+  },
+  "lint-staged": {
+    "*": [
+      "biome check --write --no-errors-on-unmatched --files-ignore-unknown=true"
+    ]
   }
 }
