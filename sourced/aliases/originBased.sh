@@ -1,1 +1,1 @@
-alias p='git push -u origin HEAD'
+alias p='git push -u ${ORIGIN_REMOTE} HEAD'
