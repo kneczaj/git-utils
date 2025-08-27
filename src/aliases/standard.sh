@@ -2,10 +2,6 @@
 alias s='git status'
 alias a='git add'
 alias aa='git add --all'
-alias rc='git hook run pre-commit --ignore-missing && git rebase --continue'
-# rebase continue with no verification
-alias rcv='git rebase --continue'
-alias ri='git rebase -i'
 alias c='git commit'
 alias ca='git commit --all'
 alias caa='git add --all && git commit --all'
