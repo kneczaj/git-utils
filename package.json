@@ -10,9 +10,9 @@
     "test:coverage": "yarn test:once --coverage",
     "test:coverage:pr": "git fetch && yarn test:coverage --changed=origin/master",
     "lint": "biome check",
-    "fix": "biome check --write",
+    "fix": "yarn lint --write",
     "typecheck": "tsc --noEmit",
-    "typecheck:watch": "tsc --noEmit --watch"
+    "typecheck:watch": "yarn typecheck --watch"
   },
   "author": "Kamil Neczaj",
   "license": "LicenseRef-LICENSE",
