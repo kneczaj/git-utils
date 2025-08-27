@@ -53,6 +53,10 @@
       "style": {
         // it makes a lot of merge conflicts
         "useImportType": "off"
+      },
+      "suspicious": {
+        // e.g. immutablejs breaks this
+        "noShadowRestrictedNames": "off"
       }
     }
   },
