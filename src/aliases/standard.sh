@@ -23,4 +23,6 @@ alias ch='git checkout'
 alias rs='git reset'
 alias rsh='git reset --hard'
 alias rl='git reflog'
+# short reflog
+alias rls='git reflog -n 20'
 alias f='git fetch'
