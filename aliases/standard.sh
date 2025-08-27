@@ -1,9 +1,4 @@
 #!/usr/bin/env bash
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-
-source ${SCRIPT_DIR}/standard.sh
-source ${SCRIPT_DIR}/originBased.sh
-
 alias s='git status'
 alias a='git add'
 alias aa='git add --all'
@@ -28,5 +23,3 @@ alias rs='git reset'
 alias rsh='git reset --hard'
 alias rl='git reflog'
 alias f='git fetch'
-alias p='git push -u origin HEAD'
-alias create='${SCRIPT_DIR}/create-repo.sh'
