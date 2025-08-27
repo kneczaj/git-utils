@@ -11,6 +11,7 @@
     "test:coverage:pr": "git fetch && yarn test:coverage --changed=${REMOTE}/${MASTER_BRANCH}",
     "lint": "biome check",
     "fix": "yarn lint --write",
+    "prepare": "husky",
     "typecheck": "tsc --noEmit",
     "typecheck:watch": "yarn typecheck --watch"
   },
