@@ -6,6 +6,6 @@ NAME=${1}
 mkdir "${NAME}"
 cd "${NAME}"
 git init
-touch .gitignore
-git add .gitignore
+touch LICENSE
+git add LICENSE
 git commit -m 'Initial commit'
