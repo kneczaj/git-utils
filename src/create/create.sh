@@ -11,4 +11,5 @@ touch LICENSE
 git add LICENSE
 git commit -m 'Initial commit'
 cp -f ${SCRIPT_DIR}/.gitignore.node ./.gitignore
-git commit --all -m 'Gitignore content'
+git add .gitignore
+git commit -m 'Gitignore content'
