@@ -1,0 +1,3 @@
+[submodule "tsImports"]
+    path = src/conflicts/tsImports
+    url = git@bitbucket.org:kneczaj/ts-import-fixer.git
