@@ -1,22 +1,5 @@
 {
-  "name": "template-base",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "start": "yarn vite-node src/index.ts",
-    "test:base": "vitest",
-    "test": "yarn test:base watch",
-    "test:once": "yarn test:base run",
-    "test:coverage": "yarn test:once --coverage",
-    "test:coverage:pr": "git fetch && yarn test:coverage --changed=${REMOTE}/${MASTER_BRANCH}",
-    "lint": "biome check",
-    "fix": "yarn lint --write",
-    "prepare": "husky",
-    "typecheck": "tsc --noEmit",
-    "typecheck:watch": "yarn typecheck --watch"
-  },
   "author": "Kamil Neczaj",
-  "license": "LicenseRef-LICENSE",
   "devDependencies": {
     "@biomejs/biome": "^2.0.6",
     "@commitlint/cli": "^19.8.1",
@@ -28,9 +11,26 @@
     "typescript": "^5.8.3",
     "vitest": "^3.2.4"
   },
+  "license": "LicenseRef-LICENSE",
   "lint-staged": {
     "*": [
       "biome check --write --no-errors-on-unmatched --files-ignore-unknown=true"
     ]
-  }
+  },
+  "main": "index.js",
+  "name": "template-base",
+  "scripts": {
+    "fix": "yarn lint --write",
+    "lint": "biome check",
+    "prepare": "husky",
+    "start": "yarn vite-node src/index.ts",
+    "test": "yarn test:base watch",
+    "test:base": "vitest",
+    "test:coverage": "yarn test:once --coverage",
+    "test:coverage:pr": "git fetch && yarn test:coverage --changed=${REMOTE}/${MASTER_BRANCH}",
+    "test:once": "yarn test:base run",
+    "typecheck": "tsc --noEmit",
+    "typecheck:watch": "yarn typecheck --watch"
+  },
+  "version": "1.0.0"
 }

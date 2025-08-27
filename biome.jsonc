@@ -1,10 +1,13 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.0.6/schema.json",
-  "vcs": {
-    "enabled": false,
-    "clientKind": "git",
-    "useIgnoreFile": true,
-    "defaultBranch": "master"
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on",
+        "useSortedAttributes": "on",
+        "useSortedKeys": "on"
+      }
+    }
   },
   "files": {
     "ignoreUnknown": false,
@@ -15,17 +18,14 @@
     "indentStyle": "space",
     "lineWidth": 100
   },
-  "assist": {
-    "actions": {
-      "source": {
-        "organizeImports": "on"
-      }
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single"
     }
   },
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true,
       "complexity": {
         // forEach looks more readable than `for` loop, and better matches functional programming
         "noForEach": "off",
@@ -33,23 +33,24 @@
         "noStaticOnlyClass": "off"
       },
       "correctness": {
-        "noUnusedVariables": {
-          "level": "error",
+        "noUnusedFunctionParameters": {
           "fix": "none",
+          "level": "error"
+        },
+        "noUnusedVariables": {
+          "fix": "none",
+          "level": "error",
           "options": {
             // otherwise using rest operator is quite inconvenient
             "ignoreRestSiblings": true
           }
-        },
-        "noUnusedFunctionParameters": {
-          "level": "error",
-          "fix": "none"
         }
       },
       "performance": {
         // it is quite more readable with off, and we need to move data processing to backend anyway
         "noAccumulatingSpread": "off"
       },
+      "recommended": true,
       "style": {
         // it makes a lot of merge conflicts
         "useImportType": "off"
@@ -60,24 +61,25 @@
       }
     }
   },
-  "javascript": {
-    "formatter": {
-      "quoteStyle": "single"
-    }
-  },
   "overrides": [
     {
       "includes": ["test/**", "**/*.spec.ts"],
       "linter": {
         "rules": {
-          "suspicious": {
-            "noExplicitAny": "off"
-          },
           "style": {
             "noNonNullAssertion": "off"
+          },
+          "suspicious": {
+            "noExplicitAny": "off"
           }
         }
       }
     }
-  ]
+  ],
+  "vcs": {
+    "clientKind": "git",
+    "defaultBranch": "master",
+    "enabled": false,
+    "useIgnoreFile": true
+  }
 }
