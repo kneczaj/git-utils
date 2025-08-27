@@ -3,6 +3,7 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 alias s='git status'
 alias a='git add'
+alias aa='git add --all'
 alias rc='git rebase --continue'
 alias ri='git rebase -i'
 alias c='git commit'
