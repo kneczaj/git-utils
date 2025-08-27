@@ -2,7 +2,9 @@
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
-env "$(cat "${SCRIPT_DIR}/.env" | sed -e '/#/d' | xargs)"
+set -o allexport
+source "${SCRIPT_DIR}/.env"
+set +o allexport
 
 source "${SCRIPT_DIR}/sourced/gitAliases.sh"
 
