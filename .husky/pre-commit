@@ -1,1 +1,1 @@
-yarn lint --error-on-warnings
+lint-staged
