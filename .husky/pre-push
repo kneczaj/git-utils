@@ -1,0 +1,3 @@
+yarn lint --error-on-warnings
+yarn typecheck
+yarn test:once
