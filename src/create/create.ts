@@ -10,18 +10,24 @@ const template = args[1];
 
 const availableTemplates = ['base', 'node'];
 
-// Validate arguments
-if (!name || !template) {
-  console.error(
-    `usage: <dir name> <template>, where template is one of: ${availableTemplates.join(', ')}`,
-  );
-  process.exit(1);
+function usage() {
+  return `usage: <dir name> <?template>, where template is one of: ${availableTemplates.join(', ')}`;
 }
 
-if (!availableTemplates.includes(template)) {
-  console.error(
-    `usage: <dir name> <template>, where template is one of: ${availableTemplates.join(', ')}`,
-  );
+function applyTemplate(template: string) {
+  // Add template remote, fetch, and merge
+  execSync('git remote add template git@github.com:kneczaj/template-base-ts.git', {
+    stdio: 'inherit',
+  });
+  execSync('git fetch template', { stdio: 'inherit' });
+  execSync(`git merge --squash --allow-unrelated-histories template/${template}`, {
+    stdio: 'inherit',
+  });
+  execSync(`git commit -m "feat: use template ${template}"`, { stdio: 'inherit' });
+}
+
+if (!name || (template && !availableTemplates.includes(template))) {
+  console.error(usage());
   process.exit(1);
 }
 
@@ -39,20 +45,15 @@ try {
   execSync('git add LICENSE', { stdio: 'inherit' });
   execSync('git commit -m "Initial commit"', { stdio: 'inherit' });
 
-  // Add template remote, fetch, and merge
-  execSync('git remote add template git@github.com:kneczaj/template-base-ts.git', {
-    stdio: 'inherit',
-  });
-  execSync('git fetch template', { stdio: 'inherit' });
-  execSync(`git merge --squash --allow-unrelated-histories template/${template}`, {
-    stdio: 'inherit',
-  });
-  execSync(`git commit -m "feat: use template ${template}"`, { stdio: 'inherit' });
-
-  console.log(`✅ Project "${name}" created successfully using template "${template}"`);
+  if (template) {
+    applyTemplate(template);
+    console.log(`Project "${name}" created successfully using template "${template}"`);
+  } else {
+    console.log(`Project "${name}" created successfully using no template`);
+  }
 } catch (error) {
   if (error instanceof Error) {
-    console.error('❌ Error creating project:', error.message);
+    console.error('Error creating project:', error.message);
   }
   process.exit(1);
 }
