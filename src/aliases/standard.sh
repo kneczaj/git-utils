@@ -24,3 +24,4 @@ alias rl='git reflog'
 # short reflog
 alias rls='git reflog -n 20'
 alias f='git fetch'
+alias resetAuthor='git commit --amend --reset-author --no-edit'
