@@ -20,10 +20,10 @@
   "main": "index.js",
   "name": "git-utils",
   "scripts": {
+    "create": "yarn vite-node src/create/create.ts",
     "fix": "yarn lint --write",
     "lint": "biome check",
     "prepare": "husky",
-    "start": "yarn vite-node src/index.ts",
     "test": "yarn test:base watch",
     "test:base": "vitest --passWithNoTests",
     "test:coverage": "yarn test:once --coverage",
