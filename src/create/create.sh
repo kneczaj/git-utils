@@ -15,6 +15,8 @@ fi
 mkdir "${name}"
 cd "${name}"
 git init
+git config user.email "$GIT_AUTHOR_EMAIL"
+echo "Author email for the repo is: $GIT_AUTHOR_EMAIL"
 touch LICENSE
 git add LICENSE
 git commit -m 'Initial commit'
