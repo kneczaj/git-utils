@@ -8,7 +8,7 @@ const args = process.argv.slice(2);
 const name = args[0];
 const template = args[1];
 
-const availableTemplates = ['base', 'node'];
+const availableTemplates = ['base', 'node', 'react', 'react-graphql'];
 
 function usage() {
   return `usage: <dir name> <?template>, where template is one of: ${availableTemplates.join(', ')}`;
