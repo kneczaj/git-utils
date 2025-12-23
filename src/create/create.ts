@@ -8,27 +8,33 @@ const args = process.argv.slice(2);
 const name = args[0];
 const template = args[1];
 
-const availableTemplates = ['base', 'node', 'react', 'react-graphql'];
+class InvalidTemplateError extends Error {}
+
+const availableTemplates: { [Name: string]: string } = {
+  'base': 'git@bitbucket.org:kneczaj/typescript-base.git',
+  'node': 'git@bitbucket.org:kneczaj/typescript-node.git',
+  'react': 'git@bitbucket.org:kneczaj/typescript-react.git',
+  'react-graphql': 'git@bitbucket.org:kneczaj/typescript-react-graphql.git'
+};
 
 function usage() {
-  return `usage: <dir name> <?template>, where template is one of: ${availableTemplates.join(', ')}`;
+  return `usage: <dir name> <?template>, where template is one of: ${Object.keys(availableTemplates).join(', ')}`;
 }
 
 function applyTemplate(template: string) {
+  const remote = availableTemplates[template];
+  if (!remote) {
+    throw new InvalidTemplateError(`No template called ${template}`);
+  }
   // Add template remote, fetch, and merge
-  execSync('git remote add template git@github.com:kneczaj/template-base-ts.git', {
+  execSync(`git remote add template ${remote}`, {
     stdio: 'inherit',
   });
   execSync('git fetch template', { stdio: 'inherit' });
-  execSync(`git merge --squash --allow-unrelated-histories template/${template}`, {
+  execSync(`git merge --squash --allow-unrelated-histories template/master`, {
     stdio: 'inherit',
   });
   execSync(`git commit -m "feat: use template ${template}"`, { stdio: 'inherit' });
-}
-
-if (!name || (template && !availableTemplates.includes(template))) {
-  console.error(usage());
-  process.exit(1);
 }
 
 try {
@@ -55,5 +61,6 @@ try {
   if (error instanceof Error) {
     console.error('Error creating project:', error.message);
   }
+  usage();
   process.exit(1);
 }
