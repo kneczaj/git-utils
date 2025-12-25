@@ -14,7 +14,8 @@ const availableTemplates: { [Name: string]: string } = {
   'base': 'git@bitbucket.org:kneczaj/typescript-base.git',
   'node': 'git@bitbucket.org:kneczaj/typescript-node.git',
   'react': 'git@bitbucket.org:kneczaj/typescript-react.git',
-  'react-graphql': 'git@bitbucket.org:kneczaj/typescript-react-graphql.git'
+  'react-graphql': 'git@bitbucket.org:kneczaj/typescript-react-graphql.git',
+  'jsx': 'git@bitbucket.org:kneczaj/typescript-jsx.git'
 };
 
 function usage() {
